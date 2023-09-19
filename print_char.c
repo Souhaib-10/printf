@@ -1,17 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
 #include "main.h"
+
 /**
- * print_char - print char.
- * @list: va_list.
- *
+ * print_char - prints character
+ * @c: char to be prited
+ * Return 1
+ */
+
+int print_char(va_list c)
+{
+unsigned char my_ch;
+my_ch = va_arg(c, int);
+_putchar(my_ch);
+return (1);
+}
+
+/**
+ * print_percent - prints persentage
  * Return: 1
  */
-int print_char(va_list list)
+int print_percent(void)
 {
-	int c;
-
-	c = va_arg(list, int);
-
-	_putchar(c);
-
-	return (1);
+_putchar('%');
+return (1);
 }

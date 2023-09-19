@@ -1,38 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include "holberton.h"
+#include "main.h"
 
 /**
- * print_octal - prints octal
- * @o: octal to be printed
+ * print_int - prints integer
+ * @i: integer to be printed
  * Return: size
  */
 
-int print_octal(va_list o)
+int print_int(va_list i)
 {
-unsigned int len, pow, j, digit, n, num;
-int count = 0;
-n = va_arg(o, unsigned int);
+int len, pow, j, digit, n, count, num;
+count = 0;
+n = va_arg(i, int);
 if (n != 0)
 {
+if (n < 0)
+{
+_putchar('-');
+count++;
+}
 num = n;
 len = 0;
 while (num != 0)
 {
-num /= 8;
+num /= 10;
 len++;
 }
 pow = 1;
 for (j = 1; j <= len - 1; j++)
-pow *= 8;
+pow *= 10;
 for (j = 1; j <= len; j++)
 {
 digit = n / pow;
+if (n < 0)
+_putchar((digit * -1) + 48);
+else
 _putchar(digit + '0');
 count++;
 n -= (digit * pow);
-pow /= 8;
+pow /= 10;
 }
 }
 else
